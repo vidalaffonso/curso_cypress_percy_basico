@@ -16,7 +16,7 @@ describe('Ticketbox', () => {
     
   });
 
-  it('Upadates agreemente base on full name, tickets quantity, and type', () => {
+  it('Updates agreemente base on full name, tickets quantity, and type', () => {
     cy.get('#first-name').type('Vidal')
     cy.get('#last-name').type('Affonso')
     cy.get('#ticket-quantity').select('4')
@@ -24,9 +24,12 @@ describe('Ticketbox', () => {
     cy.percySnapshot();
   });
 
-  it('Shows a sucess message agetr form submission', () => {
-    cy.fillMandatoryFields();
-    cy.contains('Confirm Tickets').click()
-    cy.percySnapshot();
+
+  const successfulFormSubmission = 'Shows a success message after form submission'
+  it('successfulFormSubmission', () => {
+    cy.fillMandatoryFieldsAndSubmit();
+    cy.percySnapshot(successfulFormSubmission, {
+      percyCSS: `.success span { display: none; }`
+    });
   });
 });

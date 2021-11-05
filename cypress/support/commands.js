@@ -32,4 +32,8 @@ Cypress.Commands.add('fillMandatoryFields', ()=>{
     cy.get('#email').type('vidal.neto@teste.com')
     cy.get('#agree').check()
 })
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () => {
+    cy.fillMandatoryFields();
+    cy.contains('Confirm Tickets').click();
+  });
 
